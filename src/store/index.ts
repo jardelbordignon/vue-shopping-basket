@@ -1,8 +1,20 @@
-import { createStore } from 'vuex'
+import { createStore, Store as VuexStore } from 'vuex'
+import { actions } from './actions'
+import { getters } from './getters'
+import { mutations } from './mutations'
+import type { State } from './types'
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+const store = createStore<State>({
+  state: {
+    products: []
+  },
+  getters,
+  mutations,
+  actions
 })
+
+export function useStore(): VuexStore<State> {
+  return store as VuexStore<State>
+}
+
+export default store

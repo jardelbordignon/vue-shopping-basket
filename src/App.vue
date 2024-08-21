@@ -10,15 +10,7 @@
 export default {
   created() {
     this.axios.defaults.baseURL = 'https://fakestoreapi.com'
-
-    this.axios
-      .get('/products')
-      .then(({ data }) => {
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    this.$store.dispatch('loadProducts')
   }
 }
 </script>
