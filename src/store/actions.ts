@@ -20,6 +20,7 @@ export const actions: ActionTree<any, State> = {
   },
 
   removeFromBag({ commit }, productId: number) {
-    commit('removeFromBag', productId)
+    if (confirm('Are you sure you want to remove this item from your bag?'))
+      commit('removeFromBag', productId)
   }
 }

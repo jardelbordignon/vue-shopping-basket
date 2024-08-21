@@ -7,12 +7,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  computed: {
-    productsInBag() {
-      return this.$store.state.productsInBag
-    }
-  },
+  // computed: {
+  //   productsInBag() {
+  //     return this.$store.state.productsInBag
+  //   }
+  // },
+  computed: mapState(['productsInBag']),
   created() {
     this.axios.defaults.baseURL = 'https://fakestoreapi.com'
     this.$store.dispatch('loadProducts')
