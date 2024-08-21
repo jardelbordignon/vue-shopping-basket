@@ -6,7 +6,8 @@ import type { State } from './types'
 
 const store = createStore<State>({
   state: {
-    products: []
+    products: [],
+    productsInBag: [],
   },
   getters,
   mutations,

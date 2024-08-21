@@ -5,5 +5,9 @@ export const mutations: MutationTree<State> = {
   loadProducts(state, products: Product[]) {
     console.log('products', products)
     state.products = products
+  },
+
+  addToBag(state, product: Product) {
+    state.productsInBag.push(product)
   }
 }

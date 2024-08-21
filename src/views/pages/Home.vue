@@ -4,9 +4,17 @@ export default {
   computed: {
     products() {
       return this.$store.state.products
+    },
+    productsInBag() {
+      return this.$store.state.productsInBag
     }
   },
-  methods: {}
+  methods: {
+    addToBag(product: Product) {
+      product.quantity = 1
+      this.$store.dispatch('addToBag', product)
+    }
+  }
 }
 </script>
 
@@ -17,7 +25,7 @@ export default {
         <div class="product-image" :style="{ backgroundImage: `url(${product.image})` }"></div>
         <h4>{{ product.title }}</h4>
         <p class="price">US$ {{ product.price.toFixed(2) }}</p>
-        <button>Add to bag</button>
+        <button @click="addToBag(product)">Add to bag</button>
       </div>
     </div>
   </div>

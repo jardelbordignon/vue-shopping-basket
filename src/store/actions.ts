@@ -13,5 +13,9 @@ export const actions: ActionTree<any, State> = {
       .catch((err) => {
         console.log(err)
       })
+  },
+
+  addToBag({ commit }, product) {
+    commit('addToBag', product)
   }
 }
