@@ -1,36 +1,54 @@
-<template>
-  <div class="basket">
-    <div class="items">
-      <div class="item">
-        <div class="remove">Remove item</div>
-        <div class="photo">
-          <img
-            src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="description">Mens Casual Premium Slim Fit T-Shirts</div>
-        <div class="price">
-          <span class="quantity-area">
-            <button disabled="">-</button>
-            <span class="quantity">1</span>
-            <button>+</button>
-          </span>
-          <span class="amount">US$ 22.30</span>
-        </div>
-      </div>
-      <div class="grand-total">Grand Total: US$ 22.30</div>
-    </div>
-  </div>
-</template>
+<script lang="ts">
+import { mapState } from 'vuex'
 
-<script>
 export default {
   name: 'BasketPage',
 
-  methods: {}
+  computed: mapState(['productsInBag']),
+  methods: {
+    removeFromBag(productId: number) {
+      this.$store.dispatch('removeFromBag', productId)
+    }
+  }
 }
 </script>
+
+<template>
+  <div class="basket">
+    <div class="items">
+      <template v-if="productsInBag.length">
+        <div class="item" v-for="product in productsInBag" :key="product.id">
+          <div class="remove" @click="removeFromBag(product.id)">Remove item</div>
+          <div class="photo">
+            <img :src="product.image" :alt="product.title" />
+          </div>
+          <div class="description">{{ product.title }}</div>
+          <div class="price">
+            <span class="quantity-area">
+              <button :disabled="product.quantity <= 1" @click="product.quantity--">-</button>
+              <span class="quantity">{{ product.quantity }}</span>
+              <button @click="product.quantity++">+</button>
+            </span>
+            <span class="amount">US$ {{ (product.price * product.quantity).toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <div class="grand-total">
+          Grand Total: US$
+          {{
+            productsInBag
+              .reduce((acc, product) => acc + product.price * product.quantity, 0)
+              .toFixed(2)
+          }}
+        </div>
+      </template>
+
+      <template v-else>
+        <h4>Your bag is empty</h4>
+      </template>
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 .basket {
