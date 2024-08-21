@@ -15,7 +15,11 @@ export const actions: ActionTree<any, State> = {
       })
   },
 
-  addToBag({ commit }, product) {
+  addToBag({ commit }, product: Product) {
     commit('addToBag', product)
+  },
+
+  removeFromBag({ commit }, productId: number) {
+    commit('removeFromBag', productId)
   }
 }

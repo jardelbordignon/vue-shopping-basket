@@ -9,5 +9,9 @@ export const mutations: MutationTree<State> = {
 
   addToBag(state, product: Product) {
     state.productsInBag.push(product)
+  },
+
+  removeFromBag(state, productId: number) {
+    state.productsInBag = state.productsInBag.filter(({ id }) => id !== productId)
   }
 }

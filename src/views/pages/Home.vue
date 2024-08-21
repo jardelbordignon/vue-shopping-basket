@@ -14,9 +14,12 @@ export default {
       product.quantity = 1
       this.$store.dispatch('addToBag', product)
     },
-    isInBag(product: Product) {
-      return this.productsInBag.find(item => item.id === product.id)
+    removeFromBag(productId: number) {
+      this.$store.dispatch('removeFromBag', productId)
     },
+    isInBag(product: Product) {
+      return this.productsInBag.find((item) => item.id === product.id)
+    }
   }
 }
 </script>
@@ -24,12 +27,17 @@ export default {
 <template>
   <div class="home">
     <div class="products">
-      <div class="product" v-for="product in products" :key="product.id">
+      <div
+        v-for="product in products"
+        :key="product.id"
+        class="product"
+        :class="{ inBag: isInBag(product) }"
+      >
         <div class="product-image" :style="{ backgroundImage: `url(${product.image})` }"></div>
         <h4>{{ product.title }}</h4>
         <p class="price">US$ {{ product.price.toFixed(2) }}</p>
         <button v-if="!isInBag(product)" @click="addToBag(product)">Add to bag</button>
-        <button v-else class="remove">Remove from bag</button>
+        <button v-else @click="removeFromBag(product.id)" class="remove">Remove from bag</button>
       </div>
     </div>
   </div>
