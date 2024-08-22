@@ -1,11 +1,4 @@
-<style>
-#container {
-  background: #111;
-  padding: 20px 25px;
-}
-</style>
-
-<div id='container'>
+<div style="background: #111; padding: 20px 25px;">
 
 <h1 align="center">Vue Shopping Basket</h1>
 
