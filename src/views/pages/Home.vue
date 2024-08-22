@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import { mapState } from 'vuex'
 
 export default {
@@ -13,14 +13,14 @@ export default {
   // },
   computed: mapState(['products', 'productsInBag']),
   methods: {
-    addToBag(product: Product) {
+    addToBag(product) {
       product.quantity = 1
       this.$store.dispatch('addToBag', product)
     },
-    removeFromBag(productId: number) {
+    removeFromBag(productId) {
       this.$store.dispatch('removeFromBag', productId)
     },
-    isInBag(product: Product) {
+    isInBag(product) {
       return this.productsInBag.find((item) => item.id === product.id)
     }
   }
