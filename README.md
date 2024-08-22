@@ -37,3 +37,5 @@ $ npm i
 # Execute o aplicativo
 $ npm run dev
 ```
+
+</div>
