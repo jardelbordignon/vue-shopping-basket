@@ -11,8 +11,13 @@ export type Product = {
   }
 }
 
+export type ProductInBag = Product & {
+  quantity: number
+}
+
 export type State = {
   products: Product[]
+  productsInBag: ProductInBag[]
 }
 
 export type Getters = {

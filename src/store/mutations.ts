@@ -1,5 +1,5 @@
 import type { MutationTree } from 'vuex'
-import type { State, Product } from './types'
+import type { State, Product, ProductInBag } from './types'
 
 export const mutations: MutationTree<State> = {
   loadProducts(state, products: Product[]) {
@@ -7,11 +7,17 @@ export const mutations: MutationTree<State> = {
     state.products = products
   },
 
-  addToBag(state, product: Product) {
+  loadBag(state, products: ProductInBag[]) {
+    state.productsInBag = products
+  },
+
+  addToBag(state, product: ProductInBag) {
     state.productsInBag.push(product)
+    localStorage.setItem('productsInBag', JSON.stringify(state.productsInBag))
   },
 
   removeFromBag(state, productId: number) {
     state.productsInBag = state.productsInBag.filter(({ id }) => id !== productId)
+    localStorage.setItem('productsInBag', JSON.stringify(state.productsInBag))
   }
 }

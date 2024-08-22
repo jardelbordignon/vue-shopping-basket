@@ -19,6 +19,7 @@ export default {
   created() {
     this.axios.defaults.baseURL = 'https://fakestoreapi.com'
     this.$store.dispatch('loadProducts')
+    this.$store.dispatch('loadBag')
   }
 }
 </script>

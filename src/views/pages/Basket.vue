@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import { mapState } from 'vuex'
 
 export default {
@@ -6,8 +6,13 @@ export default {
 
   computed: mapState(['productsInBag']),
   methods: {
-    removeFromBag(productId: number) {
+    removeFromBag(productId) {
       this.$store.dispatch('removeFromBag', productId)
+    },
+    orderTotal() {
+      return this.productsInBag
+        .reduce((acc, product) => acc + (product.price * 100 * product.quantity) / 100, 0)
+        .toFixed(2)
     }
   }
 }
@@ -35,11 +40,7 @@ export default {
 
         <div class="grand-total">
           Grand Total: US$
-          {{
-            productsInBag
-              .reduce((acc, product) => acc + product.price * product.quantity, 0)
-              .toFixed(2)
-          }}
+          {{ orderTotal() }}
         </div>
       </template>
 

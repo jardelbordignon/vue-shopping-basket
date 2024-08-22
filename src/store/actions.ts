@@ -1,7 +1,7 @@
 import type { ActionTree } from 'vuex'
 import axios from 'axios'
 
-import type { State } from './types'
+import type { Product, State } from './types'
 
 export const actions: ActionTree<any, State> = {
   async loadProducts({ commit }) {
@@ -13,6 +13,13 @@ export const actions: ActionTree<any, State> = {
       .catch((err) => {
         console.log(err)
       })
+  },
+
+  loadBag({ commit }) {
+    const productsInBag = localStorage.getItem('productsInBag')
+    if (productsInBag) {
+      commit('loadBag', JSON.parse(productsInBag))
+    }
   },
 
   addToBag({ commit }, product: Product) {
