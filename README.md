@@ -1,39 +1,39 @@
-# shopping-bag
+<style>
+#container {
+  background: #111;
+  padding: 20px 25px;
+}
+</style>
 
-This template should help get you started developing with Vue 3 in Vite.
+<div id='container'>
 
-## Recommended IDE Setup
+<h1 align="center">Vue Shopping Basket</h1>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+<div align="center">
+  <img alt="" src="https://raw.githubusercontent.com/jardelbordignon/vue-shopping-basket/main/public/home.png" />
+  <img alt="" src="https://raw.githubusercontent.com/jardelbordignon/vue-shopping-basket/main/public/basket.png" />
+</div>
 
-## Type Support for `.vue` Imports in TS
+<br/>
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 🔦 Sobre o projeto
 
-## Customize configuration
+Um sistema simples de ecommerce em vuejs com vuex desenvolvido no curso<br/>
+https://www.udemy.com/course/vue-js-3-desenvolvimento-web-moderno-com-vuex-vue-router
+<br/>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
+## ⚡️ Iniciar o aplicativo
 
 ```sh
-npm run build
-```
+# Clone este repositório
+$ git clone https://github.com/jardelbordignon/vue-shopping-basket
 
-### Lint with [ESLint](https://eslint.org/)
+# Acesse o diretório no terminal/cmd
+$ cd vue-shopping-basket
 
-```sh
-npm run lint
+# Instale as dependências
+$ npm i
+
+# Execute o aplicativo
+$ npm run dev
 ```
